@@ -20,6 +20,14 @@
 	-->
 	<link rel="icon" href="/img/favicon/favicon.ico">
 	<meta name="theme-color" content="#00C24B">
+
+	<!-- Google Tag Manager -->
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-WZZG5B6');</script>
+	<!-- End Google Tag Manager -->
 </head>
 
 <body>
@@ -94,186 +102,56 @@
 
 		<header class="head">
 			<div class="head-slider">
-				<div class="head-slider__slide">
-					<div class="head-bg" style="background-image: url(img/head1.jpg);"></div>
-					<div class="head-flex">
-						<div class="head-flex__content container">
-							<div class="row align-items-center">
-								<div class="col-lg-8 col-md-7">
-									<div class="head-title">
-										<div class="head-title__top"></div>
-										<h1 class="head-title__ttl">{!! trans('main.title1') !!}</h1>
-										<p class="head-title__txt">{{ trans('main.subTtl1') }}</p>
-										<div class="head-title__bottom"></div>
+				@foreach($titles as $item)
+					<div class="head-slider__slide">
+						<div class="head-bg" style="background-image: url(/{{ $item['image'] }});"></div>
+						<div class="head-flex">
+							<div class="head-flex__content container">
+								<div class="row align-items-center">
+									<div class="col-lg-8 col-md-7">
+										<div class="head-title">
+											<div class="head-title__top"></div>
+											<h1 class="head-title__ttl">
+												@if (App::isLocale('ru'))
+													{!! $item['title'] !!}
+												@elseif (App::isLocale('uk'))
+													{!! $item['titleUkr'] !!}
+												@endif
+											</h1>
+											<p class="head-title__txt">
+												@if (App::isLocale('ru'))
+													{!! $item['text'] !!}
+												@elseif (App::isLocale('uk'))
+													{!! $item['textUkr'] !!}
+												@endif
+											</p>
+											<div class="head-title__bottom"></div>
+										</div>
 									</div>
-								</div>
-								<div class="col-lg-4 col-md-5">
-									<form action="mail.php" class="form_check head-form" autocomplete="flase">
-										<input type="hidden" name="title" value="Рассчитать стоимость ремонта">
-										<h3 class="head-form__ttl">{{ trans('main.mainFormTtl') }}</h3>
-										<div class="rline">
-											<input type="text" name="work" class="head-form__input" placeholder="{{ trans('main.mainFormInput1') }}">
-										</div>
-										<div class="rline">
-											<input type="text" name="parts" class="head-form__input" placeholder="{{ trans('main.mainFormInput2') }}">
-										</div>
-										<div class="rline">
-											<input type="text" name="name" class="head-form__input" placeholder="{{ trans('main.mainFormInput3') }}">
-										</div>
-										<div class="rline">
-											<input type="text" name="phone" class="rfield phonefield head-form__input" placeholder="{{ trans('main.mainFormInput4') }}">
-										</div>
-										<button type="submit" class="btnsubmit head-form__btn">{{ trans('main.mainFormBtn') }}</button>
-									</form>
+									<div class="col-lg-4 col-md-5">
+										<form action="mail.php" class="form_check head-form" autocomplete="flase">
+											<input type="hidden" name="title" value="Рассчитать стоимость ремонта">
+											<h3 class="head-form__ttl">{{ trans('main.mainFormTtl') }}</h3>
+											<div class="rline">
+												<input type="text" name="work" class="head-form__input" placeholder="{{ trans('main.mainFormInput1') }}">
+											</div>
+											<div class="rline">
+												<input type="text" name="parts" class="head-form__input" placeholder="{{ trans('main.mainFormInput2') }}">
+											</div>
+											<div class="rline">
+												<input type="text" name="name" class="head-form__input" placeholder="{{ trans('main.mainFormInput3') }}">
+											</div>
+											<div class="rline">
+												<input type="text" name="phone" class="rfield phonefield head-form__input" placeholder="{{ trans('main.mainFormInput4') }}">
+											</div>
+											<button type="submit" class="btnsubmit head-form__btn">{{ trans('main.mainFormBtn') }}</button>
+										</form>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-				<div class="head-slider__slide">
-					<div class="head-bg" style="background-image: url(img/head2.jpg);"></div>
-					<div class="head-flex">
-						<div class="head-flex__content container">
-							<div class="row align-items-center">
-								<div class="col-lg-8 col-md-7">
-									<div class="head-title">
-										<div class="head-title__top"></div>
-										<h1 class="head-title__ttl">{!! trans('main.title1') !!}</h1>
-										<p class="head-title__txt">{!! trans('main.subTtl2') !!}</p>
-										<div class="head-title__bottom"></div>
-									</div>
-								</div>
-								<div class="col-lg-4 col-md-5">
-									<form action="mail.php" class="form_check head-form" autocomplete="flase">
-										<input type="hidden" name="title" value="Рассчитать стоимость ремонта">
-										<h3 class="head-form__ttl">{{ trans('main.mainFormTtl') }}</h3>
-										<div class="rline">
-											<input type="text" name="work" class="head-form__input" placeholder="{{ trans('main.mainFormInput1') }}">
-										</div>
-										<div class="rline">
-											<input type="text" name="parts" class="head-form__input" placeholder="{{ trans('main.mainFormInput2') }}">
-										</div>
-										<div class="rline">
-											<input type="text" name="name" class="head-form__input" placeholder="{{ trans('main.mainFormInput3') }}">
-										</div>
-										<div class="rline">
-											<input type="text" name="phone" class="rfield phonefield head-form__input" placeholder="{{ trans('main.mainFormInput4') }}">
-										</div>
-										<button type="submit" class="btnsubmit head-form__btn">{{ trans('main.mainFormBtn') }}</button>
-									</form>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="head-slider__slide">
-					<div class="head-bg" style="background-image: url(img/head3.jpg);"></div>
-					<div class="head-flex">
-						<div class="head-flex__content container">
-							<div class="row align-items-center">
-								<div class="col-lg-8 col-md-7">
-									<div class="head-title">
-										<div class="head-title__top"></div>
-										<h1 class="head-title__ttl">{!! trans('main.title1') !!}</h1>
-										<p class="head-title__txt">{!! trans('main.subTtl3') !!}</p>
-										<div class="head-title__bottom"></div>
-									</div>
-								</div>
-								<div class="col-lg-4 col-md-5">
-									<form action="mail.php" class="form_check head-form" autocomplete="flase">
-										<input type="hidden" name="title" value="Рассчитать стоимость ремонта">
-										<h3 class="head-form__ttl">{{ trans('main.mainFormTtl') }}</h3>
-										<div class="rline">
-											<input type="text" name="work" class="head-form__input" placeholder="{{ trans('main.mainFormInput1') }}">
-										</div>
-										<div class="rline">
-											<input type="text" name="parts" class="head-form__input" placeholder="{{ trans('main.mainFormInput2') }}">
-										</div>
-										<div class="rline">
-											<input type="text" name="name" class="head-form__input" placeholder="{{ trans('main.mainFormInput3') }}">
-										</div>
-										<div class="rline">
-											<input type="text" name="phone" class="rfield phonefield head-form__input" placeholder="{{ trans('main.mainFormInput4') }}">
-										</div>
-										<button type="submit" class="btnsubmit head-form__btn">{{ trans('main.mainFormBtn') }}</button>
-									</form>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="head-slider__slide">
-					<div class="head-bg" style="background-image: url(img/head4.jpg);"></div>
-					<div class="head-flex">
-						<div class="head-flex__content container">
-							<div class="row align-items-center">
-								<div class="col-lg-8 col-md-7">
-									<div class="head-title">
-										<div class="head-title__top"></div>
-										<h1 class="head-title__ttl">{!! trans('main.title1') !!}</h1>
-										<p class="head-title__txt">{!! trans('main.subTtl4') !!}</p>
-										<div class="head-title__bottom"></div>
-									</div>
-								</div>
-								<div class="col-lg-4 col-md-5">
-									<form action="mail.php" class="form_check head-form" autocomplete="flase">
-										<input type="hidden" name="title" value="Рассчитать стоимость ремонта">
-										<h3 class="head-form__ttl">{{ trans('main.mainFormTtl') }}</h3>
-										<div class="rline">
-											<input type="text" name="work" class="head-form__input" placeholder="{{ trans('main.mainFormInput1') }}">
-										</div>
-										<div class="rline">
-											<input type="text" name="parts" class="head-form__input" placeholder="{{ trans('main.mainFormInput2') }}">
-										</div>
-										<div class="rline">
-											<input type="text" name="name" class="head-form__input" placeholder="{{ trans('main.mainFormInput3') }}">
-										</div>
-										<div class="rline">
-											<input type="text" name="phone" class="rfield phonefield head-form__input" placeholder="{{ trans('main.mainFormInput4') }}">
-										</div>
-										<button type="submit" class="btnsubmit head-form__btn">{{ trans('main.mainFormBtn') }}</button>
-									</form>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="head-slider__slide">
-					<div class="head-bg" style="background-image: url(img/head5.jpg);"></div>
-					<div class="head-flex">
-						<div class="head-flex__content container">
-							<div class="row align-items-center">
-								<div class="col-lg-8 col-md-7">
-									<div class="head-title">
-										<div class="head-title__top"></div>
-										<h1 class="head-title__ttl">{!! trans('main.title1') !!}</h1>
-										<p class="head-title__txt">{!! trans('main.subTtl5') !!}</p>
-										<div class="head-title__bottom"></div>
-									</div>
-								</div>
-								<div class="col-lg-4 col-md-5">
-									<form action="mail.php" class="form_check head-form" autocomplete="flase">
-										<input type="hidden" name="title" value="Рассчитать стоимость ремонта">
-										<h3 class="head-form__ttl">{{ trans('main.mainFormTtl') }}</h3>
-										<div class="rline">
-											<input type="text" name="work" class="head-form__input" placeholder="{{ trans('main.mainFormInput1') }}">
-										</div>
-										<div class="rline">
-											<input type="text" name="parts" class="head-form__input" placeholder="{{ trans('main.mainFormInput2') }}">
-										</div>
-										<div class="rline">
-											<input type="text" name="name" class="head-form__input" placeholder="{{ trans('main.mainFormInput3') }}">
-										</div>
-										<div class="rline">
-											<input type="text" name="phone" class="rfield phonefield head-form__input" placeholder="{{ trans('main.mainFormInput4') }}">
-										</div>
-										<button type="submit" class="btnsubmit head-form__btn">{{ trans('main.mainFormBtn') }}</button>
-									</form>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+				@endforeach
 			</div>
 			<div class="head-control">
 				
@@ -425,10 +303,13 @@
 				<div class="row">
 					<div class="col">
 						<div class="about-slider">
-							<img src="/img/about_slide1.jpg" alt="skoda" class="img-r">
+							@foreach($galleries['images'] as $item)
+								<a href="/{{ $item }}" class="about-slider__slide fancybox" data-fancybox="gallery" style="background-image: url({{ '/images/uploads/small/'.basename($item) }})"></a>
+							@endforeach
+							<!-- <img src="/img/about_slide1.jpg" alt="skoda" class="img-r">
 							<img src="/img/about_slide2.jpg" alt="skoda" class="img-r">
 							<img src="/img/about_slide3.jpg" alt="skoda" class="img-r">
-							<img src="/img/about_slide4.jpg" alt="skoda" class="img-r">
+							<img src="/img/about_slide4.jpg" alt="skoda" class="img-r"> -->
 						</div>
 					</div>
 				</div>
@@ -641,27 +522,21 @@
 				<div class="row">
 					<div class="col">
 						<div class="works-slider">
-							<div class="works-slider__slide">
-								<div class="works-item">
-									<div class="works-item__numb">1</div>
-									<img src="/img/works1.jpg" alt="skoda" class="works-item__img img-r">
-									<p class="works-item__txt">{{ trans('main.caseItem1') }}</p>
+							@foreach($portfolios as $item)
+								<div class="works-slider__slide">
+									<div class="works-item">
+										<div class="works-item__numb">{{ $item['numb'] }}</div>
+										<img src="/{{ $item['image'] }}" alt="skoda" class="works-item__img img-r">
+										<p class="works-item__txt">
+											@if (App::isLocale('ru'))
+												{{ $item['text'] }}
+											@elseif (App::isLocale('uk'))
+												{{ $item['textUkr'] }}
+											@endif
+										</p>
+									</div>
 								</div>
-							</div>
-							<div class="works-slider__slide">
-								<div class="works-item">
-									<div class="works-item__numb">2</div>
-									<img src="/img/works2.jpg" alt="skoda" class="works-item__img img-r">
-									<p class="works-item__txt">{{ trans('main.caseItem2') }}</p>
-								</div>
-							</div>
-							<div class="works-slider__slide">
-								<div class="works-item">
-									<div class="works-item__numb">3</div>
-									<img src="/img/works3.jpg" alt="skoda" class="works-item__img img-r">
-									<p class="works-item__txt">{{ trans('main.caseItem3') }}</p>
-								</div>
-							</div>
+							@endforeach
 						</div>
 					</div>
 				</div>
@@ -696,35 +571,15 @@
 				</div>
 				<div class="row">
 					<div class="col d-none d-sm-block">
-						<img src="/img/client1.png" alt="skoda" class="clients__logo">
-						<img src="/img/client2.png" alt="skoda" class="clients__logo">
-						<img src="/img/client3.png" alt="skoda" class="clients__logo">
-						<img src="/img/client4.png" alt="skoda" class="clients__logo">
-						<img src="/img/client5.png" alt="skoda" class="clients__logo">
-						<img src="/img/client6.png" alt="skoda" class="clients__logo">
-						<img src="/img/client7.png" alt="skoda" class="clients__logo">
-						<img src="/img/client8.png" alt="skoda" class="clients__logo">
-						<img src="/img/client9.png" alt="skoda" class="clients__logo">
-						<img src="/img/client10.png" alt="skoda" class="clients__logo">
-						<img src="/img/client11.png" alt="skoda" class="clients__logo">
-						<img src="/img/client12.png" alt="skoda" class="clients__logo">
-						<img src="/img/client13.png" alt="skoda" class="clients__logo">
+						@foreach($clients['images'] as $item)
+							<img src="{{ $item }}" alt="skoda" class="clients__logo">
+						@endforeach
 					</div>
 					<div class="col d-block d-sm-none">
 						<div class="clients-slider">
-							<div><img src="/img/client1.png" alt="skoda" class="clients__logo"></div>
-							<div><img src="/img/client2.png" alt="skoda" class="clients__logo"></div>
-							<div><img src="/img/client3.png" alt="skoda" class="clients__logo"></div>
-							<div><img src="/img/client4.png" alt="skoda" class="clients__logo"></div>
-							<div><img src="/img/client5.png" alt="skoda" class="clients__logo"></div>
-							<div><img src="/img/client6.png" alt="skoda" class="clients__logo"></div>
-							<div><img src="/img/client7.png" alt="skoda" class="clients__logo"></div>
-							<div><img src="/img/client8.png" alt="skoda" class="clients__logo"></div>
-							<div><img src="/img/client9.png" alt="skoda" class="clients__logo"></div>
-							<div><img src="/img/client10.png" alt="skoda" class="clients__logo"></div>
-							<div><img src="/img/client11.png" alt="skoda" class="clients__logo"></div>
-							<div><img src="/img/client12.png" alt="skoda" class="clients__logo"></div>
-							<div><img src="/img/client13.png" alt="skoda" class="clients__logo"></div>
+							@foreach($clients['images'] as $item)
+								<div><img src="/{{ $item }}" alt="skoda" class="clients__logo"></div>
+							@endforeach
 							<div><img src="/img/logo1.png" alt="skoda" class="clients__logo"></div>
 							<div><img src="/img/logo2.png" alt="skoda" class="clients__logo"></div>
 							<div><img src="/img/logo3.png" alt="skoda" class="clients__logo"></div>
@@ -748,30 +603,41 @@
 				<div class="row">
 					<div class="col">
 						<div class="reviews-slider">
-							<div class="reviews-slider__slide">
-								<div class="reviews-item reviews-item_black">
-									<div class="reviews-item__name">{{ trans('main.reviewItemName1') }}</div>
-									<p class="reviews-item__txt">{!! trans('main.reviewItemTxt1') !!}</p>
-								</div>
-							</div>
-							<div class="reviews-slider__slide">
-								<div class="reviews-item reviews-item_grey">
-									<div class="reviews-item__name">{{ trans('main.reviewItemName2') }}</div>
-									<p class="reviews-item__txt">{!! trans('main.reviewItemTxt2') !!}</p>
-								</div>
-							</div>
-							<div class="reviews-slider__slide mt100">
-								<div class="reviews-item reviews-item_black">
-									<div class="reviews-item__name">{{ trans('main.reviewItemName3') }}</div>
-									<p class="reviews-item__txt">{!! trans('main.reviewItemTxt3') !!}</p>
-								</div>
-							</div>
-							<div class="reviews-slider__slide mt100">
-								<div class="reviews-item reviews-item_grey">
-									<div class="reviews-item__name">{{ trans('main.reviewItemName4') }}</div>
-									<p class="reviews-item__txt">{!! trans('main.reviewItemTxt4') !!}</p>
-								</div>
-							</div>
+							@foreach($reviews as $item)
+								@if($loop->iteration % 2 == 0)
+									<div class="reviews-slider__slide mt100">
+										<div class="reviews-item reviews-item_grey">
+											<div class="reviews-item__name">{{ $item['name'] }}</div>
+											<div class="reviews-item__txt">
+												<span>{!! $item['text'] !!}</span>
+												<a href="#review{{ $item['id'] }}" class="read_more fancybox">{{ trans('main.more') }}</a>
+											</div>
+										</div>
+										<div class="d-none">
+											<div id="review{{ $item['id'] }}" class="modal-review">
+												<h3 class="modal-review__name">{{ $item['name'] }}</h3>
+												<div class="modal-review__txt">{!! $item['text'] !!}</div>
+											</div>
+										</div>
+									</div>
+								@else
+									<div class="reviews-slider__slide mt100">
+										<div class="reviews-item reviews-item_black">
+											<div class="reviews-item__name">{{ $item['name'] }}</div>
+											<div class="reviews-item__txt">
+												<span>{!! $item['text'] !!}</span>
+												<a href="#review{{ $item['id'] }}" class="read_more fancybox">{{ trans('main.more') }}</a>
+											</div>
+										</div>
+										<div class="d-none">
+											<div id="review{{ $item['id'] }}" class="modal-review">
+												<h3 class="modal-review__name">{{ $item['name'] }}</h3>
+												<div class="modal-review__txt">{!! $item['text'] !!}</div>
+											</div>
+										</div>
+									</div>
+								@endif
+							@endforeach
 						</div>
 						<div class="reviews-control"></div>
 					</div>
@@ -794,23 +660,53 @@
 					</div>
 					<div class="col-md-2 col-sm-4">
 						<h4 class="contacts__subttl">{{ trans('main.contactTime') }}</h4>
-						<p class="contacts__time">{!! trans('main.contactTimeContent') !!}</p>
+						<p class="contacts__time">
+							@if (App::isLocale('ru'))
+								{!! $contacts['timetable'] !!}
+							@elseif (App::isLocale('uk'))
+								{!! $contacts['timetableUkr'] !!}
+							@endif
+						</p>
 						<h4 class="contacts__subttl">{{ trans('main.contactPhone') }}</h4>
-						<a href="tel:+380536776676" class="contacts__phone">0536776676</a>
-						<a href="tel:+380674000176" class="contacts__phone last">0674000176</a>
-						<a href="tel:+380536777858" class="contacts__phone">0536777858 факс</a>
+						@if (isset($contacts['phone1']))
+							<a href="tel:+38{{ preg_replace('~[^0-9]~','',$contacts['phone1']) }}" class="contacts__phone">{{ $contacts['phone1'] }}</a> 
+						@endif
+						@if (isset($contacts['phone2']))
+							<a href="tel:+38{{ preg_replace('~[^0-9]~','',$contacts['phone2']) }}" class="contacts__phone">{{ $contacts['phone2'] }}</a> 
+						@endif
+						@if (isset($contacts['phone3']))
+							<a href="tel:+38{{ preg_replace('~[^0-9]~','',$contacts['phone3']) }}" class="contacts__phone">{{ $contacts['phone3'] }}</a> 
+						@endif
+						@if (isset($contacts['phone4']))
+							<a href="tel:+38{{ preg_replace('~[^0-9]~','',$contacts['phone4']) }}" class="contacts__phone">{{ $contacts['phone4'] }}</a> 
+						@endif
+						@if (isset($contacts['fax']))
+							<a href="tel:+38{{ preg_replace('~[^0-9]~','',$contacts['fax']) }}" class="contacts__phone last">{{ $contacts['fax'] }} факс</a> 
+						@endif
 						<h4 class="contacts__subttl">{{ trans('main.contactAddr') }}</h4>
-						<p class="contacts__addr">{!! trans('main.contactAddrContent') !!}</p>
+						<p class="contacts__addr">
+							@if (App::isLocale('ru'))
+								{!! $contacts['addr'] !!}
+							@elseif (App::isLocale('uk'))
+								{!! $contacts['addrUkr'] !!}
+							@endif
+						</p>
 						<div class="contacts-soc">
-							<a href="https://www.facebook.com/skodakremen/" target="_blank" class="contacts-soc__link">
-								<img src="/img/facebook.svg" alt="skoda">
-							</a>
-							<a href="https://instagram.com/avtocenter_skoda" target="_blank" class="contacts-soc__link">
-								<img src="/img/instagram.svg" alt="skoda">
-							</a>
-							<a href="https://www.youtube.com/channel/UC6Rz_oHbibjHzVK4v8cSUwQ/" target="_blank" class="contacts-soc__link">
-								<img src="/img/yotube.svg" alt="skoda">
-							</a>
+							@if (isset($contacts['facebook']))
+								<a href="{{ $contacts['facebook'] }}" target="_blank" class="contacts-soc__link">
+									<img src="/img/facebook.svg" alt="skoda">
+								</a>
+							@endif
+							@if (isset($contacts['instagram']))
+								<a href="{{ $contacts['instagram'] }}" target="_blank" class="contacts-soc__link">
+									<img src="/img/instagram.svg" alt="skoda">
+								</a>
+							@endif
+							@if (isset($contacts['youtube']))
+								<a href="{{ $contacts['youtube'] }}" target="_blank" class="contacts-soc__link">
+									<img src="/img/yotube.svg" alt="skoda">
+								</a>
+							@endif
 						</div>
 					</div>
 					<div class="col-md-5 col-sm-8">
@@ -833,6 +729,12 @@
 	</div>
 
 	<div class="d-none">
+
+		<div id="thn" class="thn">
+			<h3>{{ trans('main.thnTtl') }}</h3>
+			<p>{{ trans('main.thnTxt') }}</p>
+		</div>
+
 		<div id="about-modal" class="modal-about">
 			<div class="modal-about__img">
 				<img src="/img/modal_about.jpg" alt="skoda" class="img-r">
@@ -907,11 +809,19 @@
 		</div>
 
 		<div id="privat-modal" class="modal-info">
-			{!! trans('main.privatModal') !!}
+			@if (App::isLocale('ru'))
+				{!! $privat['text'] !!}
+			@elseif (App::isLocale('uk'))
+				{!! $privat['textUkr'] !!}
+			@endif
 		</div>
 
 		<div id="discont-modal" class="modal-info">
-			{!! trans('main.discontModal') !!}
+			@if (App::isLocale('ru'))
+				{!! $discont['text'] !!}
+			@elseif (App::isLocale('uk'))
+				{!! $discont['textUkr'] !!}
+			@endif
 		</div>
 	</div>
 
@@ -929,12 +839,12 @@
 				draggable: true,
 				streetViewControl: false,
 				mapTypeControl: false,
-				center: new google.maps.LatLng(49.1055095,33.4070733)
+				center: new google.maps.LatLng({{ $contacts['longitude'] }},{{ $contacts['latitude'] }})
 			};
 			var mapElement = document.getElementById('map');
 			var map = new google.maps.Map(mapElement, mapOptions);
 			var marker = new google.maps.Marker({
-				position: new google.maps.LatLng(49.1055095,33.4070733),
+				position: new google.maps.LatLng({{ $contacts['longitude'] }},{{ $contacts['latitude'] }}),
 				map: map,
 			});
 		}

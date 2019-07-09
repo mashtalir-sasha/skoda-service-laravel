@@ -13,6 +13,22 @@
 
 Route::localizedGroup(function () {
 	Route::get('/', function () {
-	    return view('main');
+        return view('main', [
+            'titles' => \App\Titles::get(),
+            'contacts' => \App\Contacts::find(1),
+            'reviews' => \App\Reviews::get(),
+            'privat' => \App\Conditions::find(1),
+            'discont' => \App\Conditions::find(2),
+            'portfolios' => \App\Portfolios::orderBy('numb', 'asc')->get(),
+            'clients' => \App\Clients::find(1),
+            'galleries' => \App\Galleries::find(1),
+            'controller' => new \App\Http\Controllers\HomeController()
+        ]);
 	});
+});
+
+Auth::routes();
+
+Route::get('/home', function () {
+    return redirect('/admin');
 });
